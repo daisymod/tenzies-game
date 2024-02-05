@@ -55,10 +55,10 @@ main{
   border: none;
   border-radius: 3.813px;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  padding: 5px;
   color: #2B283A;
   font-size: 24px;
   font-style: normal;
@@ -85,4 +85,74 @@ main{
 
 .btn:active{
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.dice--dot{
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color:black;
+}
+
+.dice--first-face{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dice--second-face{
+  display: flex;
+  justify-content : space-between;
+}
+.dice--second-face .dice--dot:nth-of-type(2) {
+  align-self: flex-end;
+}
+
+.dice--third-face{
+  display: flex;
+  justify-content : space-between;
+}
+.dice--third-face .dice--dot:nth-of-type(3) {
+  align-self :flex-end;
+}
+.dice--third-face .dice--dot:nth-of-type(2) {
+  align-self :center;
+}
+
+.dice--fourth-face{
+  display: grid;
+  grid-template-columns: 5px 5px;
+  align-content: space-between;
+  justify-content: space-between;
+}
+
+.dice--fifth-face{
+  display: grid;
+  grid-template-columns: 5px 5px 5px;
+  align-content: space-between;
+  justify-content: space-between;
+}
+
+.dice--fifth-face .dice--dot:nth-of-type(2){
+  grid-column: 3;
+}
+.dice--fifth-face .dice--dot:nth-of-type(3){
+  grid-column: 2;
+}
+.dice--fifth-face .dice--dot:nth-of-type(4){
+  grid-column: 1;
+  grid-row: 3;
+}
+.dice--fifth-face .dice--dot:nth-of-type(5){
+  grid-column: 3;
+  grid-row: 3;
+}
+
+
+.dice--sixth-face{
+  display: grid;
+  grid-template-columns: 5px 5px;
+  align-content: space-between;
+  justify-content: space-between;
 }

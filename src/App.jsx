@@ -6,7 +6,7 @@ import Confetti from 'react-confetti'
 
 /**
  * Updates to do:
- * CSS: put real dots on the dice
+ * CSS: put real dots on the dice +
  * Track the number of rolls
  * Track time it took to win
  * Save best time to localStorage
