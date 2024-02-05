@@ -8,13 +8,19 @@ import Confetti from 'react-confetti'
  * Updates to do:
  * CSS: put real dots on the dice +
  * Track the number of rolls      +
- * Track time it took to win
- * Save best time to localStorage
+ * Track time it took to win      +
+ * Save best time to localStorage +
  */
 function App() {
   const [dice, setDice] = useState(allNewDice())
   const [tenzies, setTenzies] = useState(false)
   const [numberOfRolls, setNumberOfRolls] = useState(0)
+  const [isRunning, setIsRunning] = useState(true);
+  const [seconds, setSeconds] = useState(0)
+  const [bestTime, setBestTime] = useState( function(){
+    return JSON.parse(localStorage.getItem('bestTime')) || 0
+  })
+
 
   useEffect(() => {
     /** .every() looks for spec condition, if every item turns true, it will return true */
@@ -23,8 +29,20 @@ function App() {
     const allSame = dice.every(die => die.value === firstVal)
     if(allHeld && allSame){
       setTenzies(true)
+      setIsRunning(false);
+      if(bestTime > seconds || bestTime === 0){
+        localStorage.setItem('bestTime', JSON.stringify(seconds))
+      }
     }
   }, [dice])
+
+  useEffect(() => {
+    let intervalId;
+    if (isRunning) {
+      intervalId = setInterval(()=>setSeconds(seconds+1), 1000);
+    }
+    return () => clearInterval(intervalId);
+  }, [isRunning, seconds]);
 
   function generateNewDie(){
     return {
@@ -41,8 +59,6 @@ function App() {
     }
     return newDice
   }
-
-  
 
   const diceElements = dice.map((die)=>{
     return <Die 
@@ -66,6 +82,12 @@ function App() {
       setTenzies(false)
       setDice(allNewDice())
       setNumberOfRolls(0)
+
+      if(bestTime > seconds || bestTime === 0){
+        setBestTime(seconds)
+      }
+      setSeconds(0);
+      setIsRunning(true);
     }
   }
 
@@ -82,6 +104,11 @@ function App() {
       {tenzies && <Confetti/>}
       <h1 className='title'>Tenzies</h1>
       <p className='description'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+      <br/>
+      <div>
+        {bestTime != 0 && <p>Best Time: {bestTime} seconds</p>}
+        {seconds}
+      </div>
       <div className='container'>
         {diceElements}
       </div>
@@ -90,7 +117,7 @@ function App() {
         onClick={rollDice}
       >
         {tenzies ? "New Game" : "Roll"}
-      </button>
+      </button><br/>
       <p>Number of rolls: {numberOfRolls}</p>
     </main>
   )

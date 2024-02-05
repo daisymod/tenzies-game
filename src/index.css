@@ -15,8 +15,8 @@ h1, p{
 }
 
 main{
-  width: 320px;
-  height: 320px;
+  width: 500px;
+  height: 500px;
   max-width: 800px;
   padding: 20px;
   border-radius: 10px;
@@ -37,7 +37,7 @@ main{
 .description{
   color: #4A4E74;
   font-family: Inter;
-  font-size: 13.107px;
+  font-size: 14px;
   font-weight: 400;
   letter-spacing: -0.393px;
 }
@@ -50,15 +50,12 @@ main{
 
 }
 .die{
-  width: 35.84px;
-  height: 35.84px;
+  width: 50px;
+  height: 50px;
   border: none;
-  border-radius: 3.813px;
+  border-radius: 5px;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.15);
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  padding: 5px;
+  padding: 10px;
   color: #2B283A;
   font-size: 24px;
   font-style: normal;
@@ -89,8 +86,8 @@ main{
 
 .dice--dot{
   display: block;
-  width: 5px;
-  height: 5px;
+  width: .45rem;
+  height: .45rem;
   border-radius: 50%;
   background-color:black;
 }
@@ -122,14 +119,14 @@ main{
 
 .dice--fourth-face{
   display: grid;
-  grid-template-columns: 5px 5px;
+  grid-template-columns: 0.45rem 0.45rem;
   align-content: space-between;
   justify-content: space-between;
 }
 
 .dice--fifth-face{
   display: grid;
-  grid-template-columns: 5px 5px 5px;
+  grid-template-columns: 0.45rem 0.45rem 0.45rem;
   align-content: space-between;
   justify-content: space-between;
 }
@@ -152,7 +149,7 @@ main{
 
 .dice--sixth-face{
   display: grid;
-  grid-template-columns: 5px 5px;
+  grid-template-columns: .45rem .45rem;
   align-content: space-between;
   justify-content: space-between;
 }
