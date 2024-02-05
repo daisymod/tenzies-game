@@ -7,13 +7,14 @@ import Confetti from 'react-confetti'
 /**
  * Updates to do:
  * CSS: put real dots on the dice +
- * Track the number of rolls
+ * Track the number of rolls      +
  * Track time it took to win
  * Save best time to localStorage
  */
 function App() {
   const [dice, setDice] = useState(allNewDice())
   const [tenzies, setTenzies] = useState(false)
+  const [numberOfRolls, setNumberOfRolls] = useState(0)
 
   useEffect(() => {
     /** .every() looks for spec condition, if every item turns true, it will return true */
@@ -60,9 +61,11 @@ function App() {
           die :
           generateNewDie()
       }))
+      setNumberOfRolls(oldNumber => ++oldNumber)
     } else {
       setTenzies(false)
       setDice(allNewDice())
+      setNumberOfRolls(0)
     }
   }
 
@@ -88,6 +91,7 @@ function App() {
       >
         {tenzies ? "New Game" : "Roll"}
       </button>
+      <p>Number of rolls: {numberOfRolls}</p>
     </main>
   )
 }
