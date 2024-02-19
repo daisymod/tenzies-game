@@ -6,6 +6,7 @@ Rule of the game:
 - Click each die to freeze it at its current value between rolls
 
 React + Vite
+
 deployed: https://tenzies-daisy.netlify.app
 
 What is done:
